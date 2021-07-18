@@ -5,6 +5,6 @@ variable "region" {
 
 variable "secret_key" {
 	description = "secret_key"
-	default = "EqLXhQ/ShhHZPE1BbK6Lm3kTIDg7ooqHFPnV9Eqn"
+	default = ""
 	sensitive = true
 }
