@@ -3,26 +3,8 @@ variable "region" {
 	default = "eu-central-1"
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 variable "secret_key" {
 	description = "secret_key"
-	default = "ymXLbqQeS4SnY+7aDcEp4Jbs68qUF79ddiecruK2"
+	default = "EqLXhQ/ShhHZPE1BbK6Lm3kTIDg7ooqHFPnV9Eqn"
 	sensitive = true
 }

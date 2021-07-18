@@ -1,5 +1,3 @@
-data "aws_availability_zones" "available" {}
-
 # 1. Create VPC
 
 resource "aws_vpc" "terraform_vpc" {
@@ -30,7 +28,7 @@ resource "aws_subnet" "terraform_subnet" {
 	availability_zone = var.availability_zone
 }
 
-# 5. Associate Subnet with Rout Table
+# 5. Associate Subnet with Route Table
 
 resource "aws_route_table_association" "terraform" {
 	subnet_id = aws_subnet.terraform_subnet.id
