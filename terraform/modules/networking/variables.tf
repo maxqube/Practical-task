@@ -4,8 +4,8 @@ variable "cidr" {
 }
 
 variable "cidr_blocks" {
-	description = "The CIDR block for the VPC."
-	default = ["10.0.0.0/16"]
+	description = "The CIDR block for the SG."
+	default = ["0.0.0.0/0"]
 }
 
 variable "subnet_cidr" {
@@ -15,7 +15,7 @@ variable "subnet_cidr" {
 
 variable "availability_zone" {
 	description = "AZ for the resources"
-	default = "eu-central-1"
+	default = "eu-central-1a"
 }
 
 

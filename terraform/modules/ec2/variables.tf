@@ -9,3 +9,30 @@ variable "network_interface_id" {
 	default = ""
 }
 
+variable "availability_zone" {
+	description = "AZ for the resources"
+	default = "eu-central-1a"
+}
+
+
+#####
+variable "sg_id" {
+	description = "security group ID"
+	type = any
+	default = ""
+}
+
+variable "subnet_id" {
+	description = "subnet  ID"
+	type = any
+	default = ""
+}
+
+variable "iam_instance_profile_name" {
+	description = "IAM instance profile Name"
+	type = any
+	default = ""
+}
+
+
+
