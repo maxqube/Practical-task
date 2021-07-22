@@ -1,6 +1,6 @@
 provider "aws" {
 	region = var.region
-	access_key = "AKIA3CR3D5LTG6U4PPW2"
+	access_key = "AKIA3CR3D5LTC5UNUG6J"
 	secret_key = var.secret_key
 }
 
@@ -10,9 +10,6 @@ module "networking" {
 
 module "ec2" {
   source     = "./modules/ec2"
-  #network_interface_id = module.networking.terraform_nic_id
-
-#########
   subnet_id = module.networking.subnet_id
   sg_id = module.networking.sg_id
   iam_instance_profile_name = module.iam.aws_iam_instance_profile_name

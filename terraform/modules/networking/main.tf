@@ -94,27 +94,3 @@ resource "aws_security_group" "terraform_allow_web" {
 		Name = "terraform_sg"
 	}
 }
-
-# 7. Create Network Interface with a Subnet from step 4
-
-#resource "aws_network_interface" "terraform_nic" {
-#  subnet_id       = aws_subnet.terraform_subnet.id
-#  private_ips     = ["10.0.1.50"]
-#  security_groups = [aws_security_group.terraform_allow_web.id]
-
-#  tags = {
-#	  Name = "terraform_nic"
-#  }
-#}
-
-# 8. Assign public IP address
-#resource "aws_eip" "terraform_eip" {
-#	vpc = true
-#	network_interface = aws_network_interface.terraform_nic.id
-#	associate_with_private_ip = "10.0.1.50"
-#	depends_on = [aws_internet_gateway.terraform_gw]
-#
-#	tags = {
-#		Name = "terraform_eip"
-#	}
-#}
