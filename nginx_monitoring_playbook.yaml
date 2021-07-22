@@ -1,0 +1,4 @@
+- hosts: webserver
+  roles:
+    - monitoring
+    - nginx

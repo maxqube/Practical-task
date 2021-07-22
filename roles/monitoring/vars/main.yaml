@@ -1,0 +1,4 @@
+# Variables for monitoring script	
+source: /home/mkub/ansible/roles/monitoring/files/metrics.sh
+destination: /home/ec2-user/monitoringscript/metrics.sh
+permissions: 755

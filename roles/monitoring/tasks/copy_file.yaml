@@ -1,0 +1,7 @@
+# Copy file to run script on remote host
+- name: Copy monitoring script file
+  become: true
+  copy:
+    src: "{{ source }}"
+    dest: "{{ destination }}"
+    mode: "{{ permissions }}"
