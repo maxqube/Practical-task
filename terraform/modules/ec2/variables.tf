@@ -3,12 +3,6 @@ variable "ami" {
 	default     = "ami-00f22f6155d6d92c5"
 }
 
-variable "network_interface_id" {
-	description = "network interface ID"
-	type = any
-	default = ""
-}
-
 variable "availability_zone" {
 	description = "AZ for the resources"
 	default = "eu-central-1a"

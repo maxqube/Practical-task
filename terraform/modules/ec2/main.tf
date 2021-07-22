@@ -8,26 +8,16 @@ resource "aws_instance" "terraform_EC2" {
 	subnet_id                   = var.subnet_id
 	iam_instance_profile = var.iam_instance_profile_name
 
-#	provisioner "file" {
-#	source      = "~/metrics.sh"
-#    destination = "/home/ec2-user/metrics.sh"
-#		connection {
-#      		type        = "ssh"
-#    		user        = "ec2-user"
-#     		private_key = "${file("C:/aws/terraform-key.pem")}"
-#     		host        = "${aws_instance.terraform_EC2.public_ip}"
-#		}
-#	}
-	
-
 	user_data = <<-EOF
 				#!/bin/bash
 				yum update -y
 				sudo yum install mailx
-				cd /home/ec2-user/
-				chmod +x metrics.ssh
 				EOF
 	tags = {
 		Name = "terraform_instance"
 	}
+}
+
+output "public_ip2" {
+	value = aws_instance.terraform_EC2.public_ip
 }
