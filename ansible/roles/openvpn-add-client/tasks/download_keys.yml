@@ -10,12 +10,12 @@
   become: yes
   shell: "zip -r {{ username }}_ovpn.zip {{ username }}"
   args:
-    chdir: "/home/ubuntu/vpn_users"
+    chdir: "/home/ec2-user/vpn_users"
     creates: "{{ username }}_ovpn.zip"
 
 - name: Download the client zip
   fetch:
-    src: "/home/ubuntu/vpn_users/{{ username }}_ovpn.zip"
+    src: "/home/ec2-user/vpn_users/{{ username }}_ovpn.zip"
     dest: "{{ output }}"
     flat: yes
 

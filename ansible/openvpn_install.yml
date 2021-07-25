@@ -10,10 +10,9 @@
       with_items:
         "{{ groups['vpn_public'][0] }}"
 
-
 - name: Bootstrap the vpn server
   hosts: vpn_public
-  user: ubuntu
+  user: ec2-user
   become_method: sudo
   connection: ssh
   gather_facts: no

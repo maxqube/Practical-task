@@ -13,6 +13,11 @@ resource "aws_instance" "terraform_vpn_ec2" {
 	}
 }
 
+resource "aws_key_pair" "vpn_auth" {
+  key_name   = "terraform_key"
+  public_key = file(var.VPN_SSH_PUBLIC_KEY)
+}
+
 # GENERATE ANSIBLE INVENTORY
 # =================================================================================
 resource "local_file" "ansible_inventory" {
@@ -22,7 +27,7 @@ ${aws_instance.terraform_vpn_ec2.public_ip}
 
 [vpn_public:vars]
 aws_region=${var.region}
-ansible_ssh_private_key_file="TODO"
+ansible_ssh_private_key_file="/root/.ssh/terraform-key.pem"
 public_ip=${aws_instance.terraform_vpn_ec2.public_ip}
 vpn_gateway=${aws_instance.terraform_vpn_ec2.private_ip}
 ovpn_port=${var.ovpn_port}

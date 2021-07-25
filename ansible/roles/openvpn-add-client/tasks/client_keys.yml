@@ -1,6 +1,6 @@
 - name: Create folder to store client files
   file:
-    path: "/home/ubuntu/vpn_users/{{ username }}"
+    path: "/home/ec2-user/vpn_users/{{ username }}"
     state: directory
 
 - name: "Build client keys"
@@ -17,15 +17,15 @@
 
 - name: Copy ta.key
   become: true
-  shell: "cp /etc/openvpn/ta.key /home/ubuntu/vpn_users/{{username}}/ta.key"
+  shell: "cp /etc/openvpn/ta.key /home/ec2-user/vpn_users/{{username}}/ta.key"
   args:
-    creates: "/home/ubuntu/vpn_users/{{ username }}/ta.key"
+    creates: "/home/ec2-user/vpn_users/{{ username }}/ta.key"
 
 - name: Copy certification files
   become: true
-  shell: "cp {{ ca_dir }}/easyrsa3/pki/{{ item }} /home/ubuntu/vpn_users/{{username}}"
+  shell: "cp {{ ca_dir }}/easyrsa3/pki/{{ item }} /home/ec2-user/vpn_users/{{username}}"
   args:
-    creates: "/home/ubuntu/vpn_users/{{ username }}/{{ item }}"
+    creates: "/home/ec2-user/vpn_users/{{ username }}/{{ item }}"
   with_items:
     - "private/{{username}}.key"
     - "ca.crt"
@@ -34,4 +34,4 @@
 - name: Generate the OpenVPN client config
   template:
     src: openvpn_client.ovpn.j2
-    dest: "/home/ubuntu/vpn_users/{{ username }}/{{ username }}.ovpn"
+    dest: "/home/ec2-user/vpn_users/{{ username }}/{{ username }}.ovpn"
