@@ -46,7 +46,12 @@ variable "ovpn_port" {
 	default = ""
 }
 
-variable "key_path" {
-	description = "Path to the key to connect to the instance."
-	default = "/root/.ssh/terraform-key.pem"
+variable "public_key_path" {
+	description = "Path to the public key."
+	default = "~/vpn.pub"
+}
+
+variable "private_key_path" {
+	description = "Path to the private to connect to the instance."
+	default = "~/vpn"
 }
