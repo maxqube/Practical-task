@@ -14,7 +14,7 @@ resource "aws_instance" "terraform_vpn_ec2" {
 }
 
 resource "aws_key_pair" "vpn_auth" {
-  key_name   = "terraform_key"
+  key_name   = "vpn"
   public_key = file(var.public_key_path)
 }
 
