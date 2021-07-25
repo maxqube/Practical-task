@@ -2,7 +2,7 @@ resource "aws_instance" "terraform_vpn_ec2" {
 	ami           = var.ami
 	availability_zone = var.availability_zone
 	instance_type = "t2.micro"
-	key_name = var.key_name
+	#key_name = var.key_name
 	associate_public_ip_address = true
 	vpc_security_group_ids      = [var.sg_id]
 	subnet_id                   = var.public_subnet_id
