@@ -1,4 +1,5 @@
 - name: Reload NGINX
+  become: true
   service:
     name: nginx
     state: reloaded
