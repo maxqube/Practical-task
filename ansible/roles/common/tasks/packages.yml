@@ -1,9 +1,8 @@
-- name: Do an apt-get update & upgrade
+- name: Do an yum update & upgrade
   become: yes
-  apt:
-    upgrade: yes
-    update_cache: yes
-    force_apt_get: yes
+  yum:
+    name: '*'
+    state: latest
 
 - name: Install required packages
   become: yes
