@@ -4,16 +4,11 @@
     name: '*'
     state: latest
 
-- name: Enable EPEL Repository on CentOS 8
-  become: yes
-  yum:
-    name: epel-release
-    state: latest
-
 - name: Install required packages
   become: yes
   package:
     name: "{{ item }}"
     state: present
   with_items:
+    - epel-release
     - sudo
