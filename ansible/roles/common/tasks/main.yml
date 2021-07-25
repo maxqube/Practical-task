@@ -1,6 +1,6 @@
 ---
 - name: 'install python'
-  raw: sudo ymu -y install python
+  raw: sudo yum -y install python
   changed_when: false
 
 - include: packages.yml
