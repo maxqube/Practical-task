@@ -1,0 +1,10 @@
+[vpn_public]
+3.121.78.103
+
+[vpn_public:vars]
+aws_region=eu-central-1
+public_ip=3.121.78.103
+vpn_gateway=10.0.1.111
+ovpn_port=1194
+vpc_cidr=10.0.0.0/16
+hostname=vpn

@@ -1,0 +1,21 @@
+client
+dev tun
+proto udp
+remote {{ public_ip }} {{ ovpn_port }}
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+
+ca ca.crt
+cert {{ username }}.crt
+key {{ username }}.key
+remote-cert-tls server
+tls-auth ta.key 1
+cipher AES-128-CBC
+auth SHA256
+key-direction 1
+verb 3
+
+sndbuf 0
+rcvbuf 0
