@@ -4,11 +4,11 @@
     name: '*'
     state: latest
 
-- name: Connect amazon repo
+- name: Enable EPEL Repository on CentOS 8
   become: yes
   yum:
-    name: amazon-linux-extras install epel
-    state: present
+    name: epel-release
+    state: latest
 
 - name: Install required packages
   become: yes
