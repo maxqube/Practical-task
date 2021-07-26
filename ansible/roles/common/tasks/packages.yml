@@ -4,10 +4,17 @@
     name: '*'
     state: latest
 
-- name: Install required packages
+- name: Ensure that  EPEL repo is present
   become: yes
   yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: present
+
+- name: Install required packages
+  become: yes
+  package:
     name: "{{ item }}"
     state: present
   with_items:
-    - epel-release
+    - ufw
+    - git

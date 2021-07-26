@@ -1,10 +1,11 @@
 [vpn_public]
-3.121.78.103
+52.58.88.90
 
 [vpn_public:vars]
 aws_region=eu-central-1
-public_ip=3.121.78.103
-vpn_gateway=10.0.1.111
+ansible_ssh_private_key_file=~/vpn
+public_ip=52.58.88.90
+vpn_gateway=10.0.1.89
 ovpn_port=1194
 vpc_cidr=10.0.0.0/16
 hostname=vpn

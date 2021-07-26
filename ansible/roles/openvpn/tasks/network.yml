@@ -20,32 +20,22 @@
     src: before.rules.j2
     dest: /etc/ufw/before.rules
 
-- name: Allow OpenSSH
-  become: yes
-  ufw:
-    rule: allow
-    name: OpenSSH
-
-- name: Allow DNS
-  become: yes
-  ufw:
-    rule: allow
-    port: 53
-    proto: any
-
-- name: Allow OpenVPN
-  become: yes
-  ufw:
-    rule: allow
-    port: 1194
-    proto: udp
+#- name: Allow webservery things
+#  become: yes
+#  ufw:
+#    rule: allow
+#    port: '{{ item }}'
+#  with_items:
+#    - "22"
+#    - "53"
+#    - "1194"
 
 - name: Disable ufw
   become: yes
   ufw:
     state: disabled
 
-- name: Enable ufw
-  become: yes
-  ufw:
-    state: enabled
+#- name: Enable ufw
+#  become: yes
+#  ufw:
+#    state: enabled
