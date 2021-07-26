@@ -4,10 +4,8 @@
     name: '*'
     state: latest
 
-- name: Install required packages
-  become: yes
-  yum:
-    name: "{{ item }}"
+- name: Install EPEL
+  package:
+    name: epel-release
     state: present
-  with_items:
-    - epel-release
+  when: ansible_distribution == "CentOS" or ansible_distribution=="RedHat"

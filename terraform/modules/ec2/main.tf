@@ -2,7 +2,7 @@ resource "aws_instance" "terraform_vpn_ec2" {
 	ami           = var.ami
 	availability_zone = var.availability_zone
 	instance_type = "t2.micro"
-	#key_name = var.key_name
+	key_name = var.key_name
 	associate_public_ip_address = true
 	vpc_security_group_ids      = [var.sg_id]
 	subnet_id                   = var.public_subnet_id
@@ -13,10 +13,10 @@ resource "aws_instance" "terraform_vpn_ec2" {
 	}
 }
 
-resource "aws_key_pair" "vpn_auth" {
-  key_name   = "vpn"
-  public_key = file(var.public_key_path)
-}
+#resource "aws_key_pair" "vpn_auth" {
+#  key_name   = "vpn"
+#  public_key = file(var.public_key_path)
+#}
 
 # GENERATE ANSIBLE INVENTORY
 # =================================================================================
@@ -27,7 +27,7 @@ ${aws_instance.terraform_vpn_ec2.public_ip}
 
 [vpn_public:vars]
 aws_region=${var.region}
-ansible_ssh_private_key_file=${var.private_key_path}
+ansible_ssh_private_key_file=${var.key_name}
 public_ip=${aws_instance.terraform_vpn_ec2.public_ip}
 vpn_gateway=${aws_instance.terraform_vpn_ec2.private_ip}
 ovpn_port=${var.ovpn_port}
