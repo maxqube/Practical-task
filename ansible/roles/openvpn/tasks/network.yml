@@ -7,12 +7,12 @@
     state: present
     reload: yes
 
-- name: Set forward policy
-  become: yes
-  lineinfile:
-    dest: /etc/default/ufw
-    line: DEFAULT_FORWARD_POLICY="ACCEPT"
-    regexp: "^DEFAULT_FORWARD_POLICY\\="
+#- name: Set forward policy
+#  become: yes
+#  lineinfile:
+#    dest: /etc/default/ufw
+#    line: DEFAULT_FORWARD_POLICY="ACCEPT"
+#    regexp: "^DEFAULT_FORWARD_POLICY\\="
 
 #- name: Copy ufw before.rules
 #  become: yes
