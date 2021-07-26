@@ -1,0 +1,10 @@
+# Copy file to run script on remote host
+- name: Ensures {{ destination }} dir exists
+  file: path={{ destination }}/conf state=directory
+
+- name: Copy monitoring script file
+  become: true
+  copy:
+    src: "{{ source }}"
+    dest: "{{ destination }}"
+    mode: "755"

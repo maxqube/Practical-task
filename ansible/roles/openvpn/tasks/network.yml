@@ -14,11 +14,11 @@
     line: DEFAULT_FORWARD_POLICY="ACCEPT"
     regexp: "^DEFAULT_FORWARD_POLICY\\="
 
-- name: Copy ufw before.rules
-  become: yes
-  template:
-    src: before.rules.j2
-    dest: /etc/ufw/before.rules
+#- name: Copy ufw before.rules
+#  become: yes
+#  template:
+#    src: before.rules.j2
+#    dest: /etc/ufw/before.rules
 
 #- name: Allow webservery things
 #  become: yes
@@ -30,10 +30,10 @@
 #    - "53"
 #    - "1194"
 
-- name: Disable ufw
-  become: yes
-  ufw:
-    state: disabled
+#- name: Disable ufw
+#  become: yes
+#  ufw:
+#    state: disabled
 
 #- name: Enable ufw
 #  become: yes

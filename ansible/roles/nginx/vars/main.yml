@@ -1,0 +1,2 @@
+# Variables for Nginx server
+nginx_install: amazon-linux-extras install nginx1.12=latest -y

@@ -45,13 +45,3 @@ variable "ovpn_port" {
 	description = "Port for the Open VPN."
 	default = ""
 }
-
-variable "public_key_path" {
-	description = "Path to the public key."
-	default = "~/vpn.pub"
-}
-
-variable "private_key_path" {
-	description = "Path to the private to connect to the instance."
-	default = "~/vpn"
-}
