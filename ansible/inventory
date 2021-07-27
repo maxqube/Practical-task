@@ -3,8 +3,8 @@
 
 [vpn_public:vars]
 aws_region=eu-central-1
-public_ip=52.29.47.253
-vpn_gateway=10.0.1.197
+public_ip=52.58.88.90
+vpn_gateway=10.0.1.89
 ovpn_port=1194
 vpc_cidr=10.0.0.0/16
 hostname=vpn

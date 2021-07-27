@@ -1,4 +1,4 @@
-resource "aws_instance" "terraform_vpn_ec2" {
+resource "aws_instance" "terraform_vpn" {
 	ami           = var.ami
 	availability_zone = var.availability_zone
 	instance_type = "t2.micro"
@@ -8,7 +8,7 @@ resource "aws_instance" "terraform_vpn_ec2" {
 	subnet_id                   = var.public_subnet_id
 
 	tags = {
-		Name = "terraform_VPN_EC2"
+		Name = "terraform_vpn"
 	}
 }
 
@@ -29,7 +29,7 @@ resource "aws_instance" "terraform_nginx" {
 				EOF
 
 	tags = {
-		Name = "terraform_Nginx_and_monitoring"
+		Name = "terraform_nginx_and_monitoring"
 	}
 }
 
@@ -37,12 +37,12 @@ resource "aws_instance" "terraform_nginx" {
 resource "local_file" "ansible_inventory" {
   content = <<EOF
 [vpn_public]
-${aws_instance.terraform_vpn_ec2.public_ip}
+${aws_instance.terraform_vpn.public_ip}
 
 [vpn_public:vars]
 aws_region=${var.region}
-public_ip=${aws_instance.terraform_vpn_ec2.public_ip}
-vpn_gateway=${aws_instance.terraform_vpn_ec2.private_ip}
+public_ip=${aws_instance.terraform_vpn.public_ip}
+vpn_gateway=${aws_instance.terraform_vpn.private_ip}
 ovpn_port=${var.ovpn_port}
 vpc_cidr=${var.cidr}
 hostname=vpn

@@ -44,10 +44,10 @@ resource "aws_route_table" "terraform_private_route_table" {
 # 4. Create Subnet
 
 resource "aws_subnet" "terraform_public_subnet" {
-	vpc_id = aws_vpc.terraform_vpc.id
-	cidr_block = var.public_subnet_cidr
+	vpc_id 					= aws_vpc.terraform_vpc.id
+	cidr_block				= var.public_subnet_cidr
 	map_public_ip_on_launch = false
-	availability_zone = var.availability_zone
+	availability_zone 		= var.availability_zone
 
 	tags = {
 		Name = "terraform_public_subnet"
@@ -55,10 +55,10 @@ resource "aws_subnet" "terraform_public_subnet" {
 }
 
 resource "aws_subnet" "terraform_private_subnet" {
-	vpc_id = aws_vpc.terraform_vpc.id
-	cidr_block = var.private_subnet_cidr
+	vpc_id 					= aws_vpc.terraform_vpc.id
+	cidr_block 				= var.private_subnet_cidr
 	map_public_ip_on_launch = false
-	availability_zone = var.availability_zone
+	availability_zone 		= var.availability_zone
 
 	tags = {
 		Name = "terraform_private_subnet"
@@ -68,13 +68,13 @@ resource "aws_subnet" "terraform_private_subnet" {
 # 5. Associate Subnet with Route Table
 
 resource "aws_route_table_association" "terraform_vpc_public_assoc" {
-	subnet_id = aws_subnet.terraform_public_subnet.id
+	subnet_id 	   = aws_subnet.terraform_public_subnet.id
 	route_table_id = aws_default_route_table.terraform_public_route_table.id
 }
 
 
-resource "aws_route_table_association" "terraform_terraform_vpc_public_assoc" {
-	subnet_id = aws_subnet.terraform_private_subnet.id
+resource "aws_route_table_association" "terraform_vpc_private_assoc" {
+	subnet_id	   = aws_subnet.terraform_private_subnet.id
 	route_table_id = aws_route_table.terraform_private_route_table.id
 }
 

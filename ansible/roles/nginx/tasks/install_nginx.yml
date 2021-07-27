@@ -1,6 +1,5 @@
 # Install NGINX
 - name: Setup NGINX server on webserver list
-  # elevate privilages
   become: true
   command: "{{ nginx_install }}"
   notify: Reload NGINX
