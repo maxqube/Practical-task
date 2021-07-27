@@ -5,4 +5,41 @@
     value: 1
     sysctl_set: yes
     state: present
+<<<<<<< HEAD
     reload: yes
+=======
+    reload: yes
+
+#- name: Set forward policy
+#  become: yes
+#  lineinfile:
+#    dest: /etc/default/ufw
+#    line: DEFAULT_FORWARD_POLICY="ACCEPT"
+#    regexp: "^DEFAULT_FORWARD_POLICY\\="
+
+#- name: Copy ufw before.rules
+#  become: yes
+#  template:
+#    src: before.rules.j2
+#    dest: /etc/ufw/before.rules
+
+#- name: Allow webservery things
+#  become: yes
+#  ufw:
+#    rule: allow
+#    port: '{{ item }}'
+#  with_items:
+#    - "22"
+#    - "53"
+#    - "1194"
+
+#- name: Disable ufw
+#  become: yes
+#  ufw:
+#    state: disabled
+
+#- name: Enable ufw
+#  become: yes
+#  ufw:
+#    state: enabled
+>>>>>>> adff912d346ac336395744894422dc836ad867e7

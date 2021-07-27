@@ -1,10 +1,18 @@
 [vpn_public]
-52.58.88.90
+52.29.47.253
 
 [vpn_public:vars]
 aws_region=eu-central-1
+<<<<<<< HEAD
 public_ip=52.58.88.90
 vpn_gateway=10.0.1.89
+=======
+public_ip=52.29.47.253
+vpn_gateway=10.0.1.197
+>>>>>>> adff912d346ac336395744894422dc836ad867e7
 ovpn_port=1194
 vpc_cidr=10.0.0.0/16
 hostname=vpn
+
+[webserver]
+ansible_host=18.193.82.189
