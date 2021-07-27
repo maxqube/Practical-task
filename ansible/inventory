@@ -10,4 +10,4 @@ vpc_cidr=10.0.0.0/16
 hostname=vpn
 
 [webserver]
-ansible_host=18.193.82.189
+18.193.82.189
