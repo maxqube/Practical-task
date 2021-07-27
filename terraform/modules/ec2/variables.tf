@@ -15,7 +15,6 @@ variable "availability_zone" {
 
 variable "sg_id" {
 	description = "security group ID"
-	type = any
 	default = ""
 }
 
@@ -26,22 +25,20 @@ variable "cidr" {
 
 variable "public_subnet_id" {
 	description = "Public subnet ID"
-	type = any
-	default = ""
+	default 	= ""
 }
 
 variable "iam_instance_profile_name" {
 	description = "IAM instance profile Name"
-	type = any
-	default = ""
+	default 	= ""
 }
 
 variable "region" {
 	description = "Region to create resources in."
-	default = ""
+	default 	= ""
 }
 
 variable "ovpn_port" {
 	description = "Port for the Open VPN."
-	default = ""
+	default 	= ""
 }
