@@ -42,3 +42,8 @@ variable "ovpn_port" {
 	description = "Port for the Open VPN."
 	default 	= ""
 }
+
+variable "ansible_user" {
+	description = "Default user for ansible to connect."
+	default 	= "ec2-user"
+}

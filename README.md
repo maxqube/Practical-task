@@ -4,47 +4,53 @@ This repository provides fully automatic deployment to AWS account. It deploys a
 
 ## Prerequisites
 
-### 1) Install AWS CLI
+### 1) Install Git and clone current repositiry
+
+- on Ubuntu: 
+```bash
+sudo apt install git
+git clone https://github.com/maxqube/Practical-task.git
+```
+
+### 2) Install AWS CLI
 
  See following guide: https://docs.aws.amazon.com/cli/latest/userguide/installing.html
 
-### 2) Configure an admin user
+### 3) Configure an admin user
 
 1.  Go to https://console.aws.amazon.com/iamv2/home?#/users
-2.  Choose a username _(e.g. terraform)_ and give programmatic access.
+2.  Choose a username _(e.g. terraform)_ and give programmatic access
 3.  Add exiting policy: _AdministratorAccess_
-4.  Download the credentials and configure a profile in aws-cli
-
-```bash
-aws configure --profile terraform
-aws iam get-user --profile terraform
-```
-5. As an alternative setup, go to Security Credentials https://console.aws.amazon.com/iamv2/home?#/users
-6. Create Access Key
-7. Configure aws-cli using Acess & Secret keys
+4.  Configure aws-cli using Acess & Secret keys
 
 ```bash
 aws configure
 AWS Access Key ID [None]: <Your Access Key>
 AWS Secret Access Key [None]: <Your Secret Access Key>
-Default region name [None]: <default region>
+Default region name [None]: <preferred region>
 Default output format [None]: <>
 ```
 
-### 3) Create a ssh key-pair to access the EC2 instances
+5. As an alternative setup - download the credentials and configure a profile in aws-cli
+
+```bash
+aws configure --profile terraform
+aws iam get-user --profile terraform
+```
+
+### 4) Create a ssh key-pair to access the EC2 instances
 
 1. Go to https://eu-central-1.console.aws.amazon.com/ec2/v2/home?region=eu-central-1#KeyPairs:
 2. Enter key name e.g. `terraform-key` and save it in .pem extension
 3. Key name should be specified in _\terraform\modules\ec2\variables.tf_
 
-### 4) Install Ansible and configure access keys
+### 5) Install Ansible and configure access keys
 
-- On RHEL: `sudo yum install ansible`
+- On Ubuntu: `sudo apt install ansible`
 
 For other operation systems see https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
 
 1. Using ssh-agent configure ansible access
-2. Copy key to .ssh? <<< Clarify>>>!!!!
 
 ```bash
 ssh-agent bash
@@ -53,14 +59,14 @@ ssh-add ~/.ssh/terrafrom-key.pem
 
 ## Configuration
 
-### 1) Variables with description may be found in _variables.tf_ files under _/terrafrom_ root folder or in _terraform/modules_ folders
+### 1) Terraform variables with description may be found in _variables.tf_ files under _/terrafrom_ root folder or in _terraform/modules_ folders. 
 
-1. Modify those varibales according to your needs, or stick with defauls
-
+1. Modify those variables according to your needs, or stick with defauls.
+2. Default user for ansible connection is located in _terraform\modules\ec2\variables.tf_
 
 ### 2) Modify the default variables of the openvpn ansible role as you wish _/ansible/roles/openvpn/default/main.yml_
 
-note: if working with AWS pay attention to the user specified for `ca_dir:` 
+note: Modify user for `ca_dir` variable if needed 
 
 ```yml
 ovpn_cidr: 10.3.0.0/24
@@ -89,7 +95,7 @@ terraform plan
 terraform apply
 ```
 
-### 2) Wait till both EC2 instanes are ready
+### 2) Wait till both EC2 instances are ready
 
 1. Ansible inventory file will be populated automatically
 
@@ -107,7 +113,6 @@ ansible-playbook -i inventory openvpn_install.yml -e "username=ec2-user" -e "out
 ### 4) Install NGINX and set up monitoring script
 
 ```bash
-cd ../terraform
 ansible-playbook -i inventory nginx_and_monitoring.yml
 ```
 
@@ -116,7 +121,7 @@ ansible-playbook -i inventory nginx_and_monitoring.yml
 ### 1) Verify that default NGIX web page is reachable
 
 1. Open _/ansible/inventory_ file and copy IP under [webserver] node
-2. Paste IP into browser and set port to :80 _(e.g. xxx.xx.xx.xx:80)_
+2. Paste IP into the browser and set port to :80 _(e.g. xxx.xx.xx.xx:80)_
 3. "Welcome to nginx on Amazon Linux!" web page should be displayed
 
 ### 2) Verify monitoring script and cron job
@@ -130,6 +135,7 @@ sudo crontab -e
 4. Verify that cronjob is present and set to be run every 5 minutes
 
 ### 3) Verify VPN
+
 1. Download OpenVPN client to your host
 2. Import certificates to VPN config folder, click Connect
-3. Ping EC2 private IP (maybe add a step how to obtain it)
+3. Ping EC2 private IP _can be obtained from inventory file, vpn-gateway value_
