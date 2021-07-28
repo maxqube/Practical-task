@@ -45,13 +45,13 @@ public_ip=${aws_instance.terraform_vpn.public_ip}
 vpn_gateway=${aws_instance.terraform_vpn.private_ip}
 ovpn_port=${var.ovpn_port}
 vpc_cidr=${var.cidr}
-ansible_user=${var.user}
+ansible_user=${var.ansible_user}
 hostname=vpn
 
 [webserver]
 ${aws_instance.terraform_nginx.public_ip} 
 ansible_connection=ssh
-ansible_user=${var.user} 
+ansible_user=${var.ansible_user} 
 
 EOF
 
