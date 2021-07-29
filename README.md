@@ -41,10 +41,11 @@ Default output format [None]: <>
 
 ### 5) Add *.pem file for ansible authentication
 
-1. Create file
+1. Create directory
 
 ```bash
-cd ~/.ssh/
+mkdir ~/.ssh
+cd ~/.ssh
 vim terraform-key.pem
 ```
 3. Copy-paste key contents, save the file
@@ -54,6 +55,7 @@ vim terraform-key.pem
 chmod 600 terraform-key.pem
 ssh-add terraform-key.pem
 ```
+5. Identity added confirmation should appear, in case message is not shown run `eval "$(ssh-agent -s)"`before ssh-add
 
 ### 6) Install Ansible
 

@@ -59,8 +59,8 @@ EOF
 resource "local_file" "ansible_config" {
   content = <<EOF
 [defaults]
-private_key_file=~/.ssh/${var.key_name}
-ansible_user=${var.ansible_user} 
+private_key_file=~/.ssh/${var.key_name}.pem
+remote_user=${var.ansible_user} 
 
 EOF
 
