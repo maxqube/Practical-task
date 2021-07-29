@@ -1,5 +1,6 @@
 # Copy file to run script on remote host
 - name: Ensures {{ destination }} dir exists
+  become: true
   file: path={{ destination }} state=directory
 
 - name: Copy monitoring script file
