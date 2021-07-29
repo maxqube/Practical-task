@@ -1,0 +1,7 @@
+---
+- name: 'install python'
+  raw: sudo yum -y install python
+  changed_when: false
+
+- include: packages.yml
+- include: network.yml

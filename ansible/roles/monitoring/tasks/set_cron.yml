@@ -1,0 +1,6 @@
+#Run monitoring script every 5 minutes
+- name: Set up a cron job for monitoring script
+  ansible.builtin.cron:
+    name: "monitoring script"
+    minute: "*/5"
+    job: "{{ destination  }}"

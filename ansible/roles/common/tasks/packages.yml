@@ -1,0 +1,19 @@
+- name: Do an yum update & upgrade
+  become: yes
+  yum:
+    name: '*'
+    state: latest
+
+- name: Ensure that EPEL repo is present
+  become: yes
+  yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: present
+
+- name: Install required packages
+  become: yes
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - git

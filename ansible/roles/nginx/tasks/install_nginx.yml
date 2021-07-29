@@ -1,0 +1,5 @@
+# Install NGINX
+- name: Setup NGINX server on webserver list
+  become: true
+  command: "{{ nginx_install }}"
+  notify: Reload NGINX

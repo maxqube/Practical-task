@@ -1,0 +1,3 @@
+# Variables for monitoring script	
+source: metrics.sh
+destination: /home/monitoringscript/metrics.sh

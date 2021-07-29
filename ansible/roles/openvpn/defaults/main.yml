@@ -1,0 +1,13 @@
+ovpn_cidr: 10.3.0.0/24
+ovpn_network: 10.3.0.0 255.255.255.0
+ovpn_push_routes:
+  - 10.0.0.0 255.0.0.0
+
+ca_dir: /home/ec2-user/ca
+
+ca_key_country: UKR
+ca_key_city: Lviv
+ca_key_org: MyOrganization
+ca_key_email: your.email@organization.org
+ca_key_org_unit: MyOrganizationalUnit
+ca_key_name: vpn_server
