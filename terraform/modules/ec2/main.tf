@@ -56,7 +56,7 @@ EOF
   filename = "../ansible/inventory"
 }
 
-resource "local_file" "ansible_inventory" {
+resource "local_file" "ansible_config" {
   content = <<EOF
 [defaults]
 private_key_file=~/.ssh/${var.key_name}
